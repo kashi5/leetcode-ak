@@ -18,8 +18,7 @@ class Solution:
 #     return array
       
 def inOrderIterative(root):
-    res =[]
-    stack=[]
+    res,stack=[],[]
     curr = root
     while curr is not None or len(stack)!=0 :
         while curr is not None:
