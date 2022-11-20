@@ -10,8 +10,8 @@ class Solution:
         Do not return anything, modify root in-place instead.
         """
         # return root
-        if root is None:
-            return
+        if not root:
+            return None
         if root.left is not None:
             aux_node = root.right
             root.right = root.left
