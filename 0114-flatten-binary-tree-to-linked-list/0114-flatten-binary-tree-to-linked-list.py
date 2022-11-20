@@ -9,20 +9,21 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        # return root
-        if not root:
-            return None
-        if root.left is not None:
-            aux_node = root.right
-            root.right = root.left
-            root.left = None
-            self.attach_aux_node(root.right,aux_node)
-            self.flatten(root.right)
-        self.flatten(root.right)
+        #flatten the root tree and return the list tail
         
-    def attach_aux_node(self,node,aux_node):
-        if node.right is None:
-            node.right = aux_node
-            return
-        self.attach_aux_node(node.right,aux_node)
+        def dfs(root):
+            if not root:
+                return None
+            
+            leftTail = dfs(root.left)
+            rightTail = dfs(root.right)
+            
+            if leftTail:
+                leftTail.right = root.right
+                root.right = root.left
+                root.left = None
+            last = rightTail or leftTail or root
+            return last
+        dfs(root)
+        
         
