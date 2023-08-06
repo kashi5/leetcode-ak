@@ -1,4 +1,4 @@
-from collections import defaultdict
+# from collections import defaultdict
 class Solution:
     def solveSudoku(self, board):
         """
@@ -16,9 +16,9 @@ class Solution:
             """
             Place a number d in (row, col) cell
             """
-            rows[row][d] = 1
-            columns[col][d] = 1
-            boxes[box_index(row, col)][d] = 1
+            rows[row].update({d:1})
+            columns[col].update({d:1})
+            boxes[box_index(row, col)].update({d:1})
             board[row][col] = str(d)
             
         def remove_number(d, row, col):
@@ -79,9 +79,12 @@ class Solution:
         box_index = lambda row, col: (row // n ) * n + col // n
         
         # init rows, columns and boxes
-        rows = [defaultdict(int) for i in range(N)]
-        columns = [defaultdict(int) for i in range(N)]
-        boxes = [defaultdict(int) for i in range(N)]
+        # rows = [defaultdict(int) for i in range(N)]
+        # columns = [defaultdict(int) for i in range(N)]
+        # boxes = [defaultdict(int) for i in range(N)]
+        rows = [{} for i in range(N)]
+        columns = [{} for i in range(N)]
+        boxes = [{} for i in range(N)]
         for i in range(N):
             for j in range(N):
                 if board[i][j] != '.': 
