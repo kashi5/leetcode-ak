@@ -16,9 +16,9 @@ class Solution:
             """
             Place a number d in (row, col) cell
             """
-            rows[row][d] += 1
-            columns[col][d] += 1
-            boxes[box_index(row, col)][d] += 1
+            rows[row][d] = 1
+            columns[col][d] = 1
+            boxes[box_index(row, col)][d] = 1
             board[row][col] = str(d)
             
         def remove_number(d, row, col):
