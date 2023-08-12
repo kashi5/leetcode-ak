@@ -1,6 +1,7 @@
 from collections import deque
 
 class FirstUnique:
+    'Approach 2: Queue and HashMap of Unique-Status'
 
     def __init__(self, nums: List[int]):
         self._queue = deque(nums)
